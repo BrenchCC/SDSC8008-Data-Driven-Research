@@ -1,0 +1,48 @@
+experiment:
+  random_seed: 20260513
+  t_max: 10000
+  n_sim: 10
+  increment: 10
+
+model:
+  alpha: 1.1
+  beta: 0.5
+  sigma: 0.1
+  zeta: 0.1
+  price_lower: 0.5
+  price_upper: 1.5
+
+scenarios:
+  no_reference:
+    eta_plus: 0.0
+    eta_minus: 0.0
+  reference_effect:
+    eta_plus: 0.1
+    eta_minus: 0.3
+
+deterministic_testing:
+  test_price_rule: interval thirds
+
+slow_moving:
+  c_0: 0.1
+  p_star_hat_0: 1.0
+  initial_half_episode_length: 2
+  initial_delta_rule: c_0 * 2^(-0.25)
+  delta_decay_power: 0.25
+
+robust_calibration:
+  experiment_name: Reference-Aware Robust Calibration
+  short_name: RARC
+  zeta_values: [0.02, 0.10, 0.40]
+  eta_plus: 0.10
+  eta_minus_values: [0.15, 0.30, 0.45]
+  c_0_values: [0.05, 0.10, 0.15]
+  delta_decay_values: [0.20, 0.25, 0.30]
+  default_candidate:
+    c_0: 0.10
+    delta_decay_power: 0.25
+
+reproduction_assumptions:
+  random_seed: Chosen by the replicator for deterministic IRE runs.
+  rng_match: IRE uses deterministic NumPy RNG and does not attempt exact PSB random-stream matching.
+  source_files: Released study files are converted to NumPy and CSV before comparison.

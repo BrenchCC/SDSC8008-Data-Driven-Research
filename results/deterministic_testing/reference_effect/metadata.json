@@ -1,0 +1,20 @@
+{
+  "policy_name": "deterministic_testing",
+  "scenario_name": "reference_effect",
+  "seed": 20260513,
+  "t_max": 10000,
+  "n_sim": 10,
+  "increment": 10,
+  "alpha": 1.1,
+  "beta_positive_notation": 0.5,
+  "eta_plus": 0.1,
+  "eta_minus": 0.3,
+  "sigma": 0.1,
+  "zeta": 0.1,
+  "p_min": 0.5,
+  "p_max": 1.5,
+  "p_star": 1.1,
+  "test_price_1": 0.8333333333333333,
+  "test_price_2": 1.1666666666666665,
+  "reproduction_note": "Deterministic IRE random stream is used; exact PSB random-stream matching is not attempted."
+}

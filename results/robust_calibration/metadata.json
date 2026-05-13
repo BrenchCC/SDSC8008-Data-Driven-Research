@@ -1,0 +1,34 @@
+{
+  "experiment_name": "Reference-Aware Robust Calibration",
+  "short_name": "RARC",
+  "t_max": 10000,
+  "n_sim": 10,
+  "seed": 20260513,
+  "increment": 10,
+  "zeta_values": [
+    0.02,
+    0.1,
+    0.4
+  ],
+  "eta_plus": 0.1,
+  "eta_minus_values": [
+    0.15,
+    0.3,
+    0.45
+  ],
+  "c_0_values": [
+    0.05,
+    0.1,
+    0.15
+  ],
+  "delta_decay_values": [
+    0.2,
+    0.25,
+    0.3
+  ],
+  "default_candidate": {
+    "c_0": 0.1,
+    "delta_decay_power": 0.25
+  },
+  "selection_rule": "mean-best minimizes average final regret; minimax-best minimizes worst-case final regret."
+}

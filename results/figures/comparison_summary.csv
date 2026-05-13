@@ -1,0 +1,9 @@
+figure,policy,scenario,metric,psb_value,ire_value,absolute_difference,relative_difference_percent
+figure2,deterministic_testing,no_reference,final_mean_regret,12.18326559852607,9.669307512550224,-2.5139580859758457,-20.634517614718863
+figure2,deterministic_testing,reference_effect,final_mean_regret,328.7876914421816,299.51278745459695,-29.27490398758465,-8.903892922260667
+figure3,deterministic_testing,no_reference,final_mean_price_estimate,1.0952962453375963,1.090420845457358,-0.004875399880238218,-0.4451215733635154
+figure3,deterministic_testing,reference_effect,final_mean_price_estimate,0.8497104042700168,0.8602562625504457,0.010545858280428977,1.2411120574060626
+figure4,slow_moving,reference_effect,final_mean_reference_price,1.096580508865204,1.0757452180110412,-0.020835290854162913,-1.900023818198657
+figure4,slow_moving,reference_effect,final_mean_price_estimate,1.109080508865204,1.0882452180110407,-0.020835290854163357,-1.8786094145213805
+figure5,slow_moving,no_reference,final_mean_regret,7.607359018265372,11.858234641095633,4.250875622830261,55.87846731860362
+figure5,slow_moving,reference_effect,final_mean_regret,10.397148567690449,12.329618242019375,1.9324696743289262,18.586535161516807

@@ -1,0 +1,23 @@
+{
+  "policy_name": "slow_moving",
+  "scenario_name": "no_reference",
+  "seed": 20260513,
+  "t_max": 10000,
+  "n_sim": 10,
+  "increment": 10,
+  "alpha": 1.1,
+  "beta_positive_notation": 0.5,
+  "eta_plus": 0.0,
+  "eta_minus": 0.0,
+  "sigma": 0.1,
+  "zeta": 0.1,
+  "p_min": 0.5,
+  "p_max": 1.5,
+  "p_star": 1.1,
+  "c_0": 0.1,
+  "delta_decay_power": 0.25,
+  "initial_p_star_hat": 1.0,
+  "initial_half_episode_length": 2,
+  "initial_delta": 0.08408964152537146,
+  "reproduction_note": "Policy follows the released study procedure; exact PSB random-stream matching is not attempted."
+}

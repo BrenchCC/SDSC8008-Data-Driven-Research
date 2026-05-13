@@ -7,12 +7,12 @@ import numpy as np
 
 sys.path.append(os.getcwd())
 
-from model.demand import DemandParameters, expected_demand, optimal_static_price
-from model.reference import update_exponential_reference
-from metrics.regret import benchmark_revenue, expected_revenue
-from strategies.slow_moving import run_slow_moving
-from strategies.robust_calibration import run_robust_calibration
-from estimators.least_squares import least_squares_estimate, estimated_optimal_price
+from ire.model.demand import DemandParameters, expected_demand, optimal_static_price
+from ire.model.reference import update_exponential_reference
+from ire.metrics.regret import benchmark_revenue, expected_revenue
+from ire.strategies.slow_moving import run_slow_moving
+from ire.strategies.robust_calibration import run_robust_calibration
+from ire.estimators.least_squares import least_squares_estimate, estimated_optimal_price
 
 
 def test_expected_demand_left_and_right_segments():

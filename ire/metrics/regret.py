@@ -8,7 +8,7 @@ import numpy as np
 
 sys.path.append(os.getcwd())
 
-from model.demand import DemandParameters, expected_demand
+from ire.model.demand import DemandParameters, expected_demand
 
 logger = logging.getLogger(__name__)
 

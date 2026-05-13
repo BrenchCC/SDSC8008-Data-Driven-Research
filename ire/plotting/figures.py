@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 
 sys.path.append(os.getcwd())
 
-from utils.result_io import ensure_directory
+from ire.utils.result_io import ensure_directory
 
 logger = logging.getLogger(__name__)
 

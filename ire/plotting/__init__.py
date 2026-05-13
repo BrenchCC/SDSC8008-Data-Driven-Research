@@ -5,4 +5,4 @@ import sys
 
 sys.path.append(os.getcwd())
 
-from plotting.figures import plot_selected_figures
+from ire.plotting.figures import plot_selected_figures

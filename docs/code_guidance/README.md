@@ -19,14 +19,25 @@ cd /path/to/SDSC8008-Data-Driven-Research
 ## 2. 目录结构
 
 - `main.py`：统一命令行入口，只负责解析命令和分发任务。
-- `model/`：需求函数与参考价格更新过程。
-- `estimators/`：最小二乘估计器，用于估计 `alpha` 与正号记法下的 `beta`。
-- `strategies/`：deterministic testing、slow-moving pricing 与 RARC 扩展实验。
-- `metrics/`：期望收入与 regret 计算。
-- `data/conversion.py`：将 PSB 数据转储为 `.npz` 和 `.csv`。
-- `plotting/`：生成 Figure 2--5 的 PSB/IRE 对比图和 RARC 扩展图。
+- `ire/`：IRE 实验实现包，包含模型、估计器、策略、指标、绘图与结果读写逻辑。
+- `ire/model/`：需求函数与参考价格更新过程。
+- `ire/estimators/`：最小二乘估计器，用于估计 `alpha` 与正号记法下的 `beta`。
+- `ire/strategies/`：deterministic testing、slow-moving pricing 与 RARC 扩展实验。
+- `ire/metrics/`：期望收入与 regret 计算。
+- `ire/data/conversion.py`：将 PSB 数据转储为 `.npz` 和 `.csv`。
+- `ire/plotting/`：生成 Figure 2--5 的 PSB/IRE 对比图和 RARC 扩展图。
+- `ire/utils/`：实验结果、CSV、NPZ 与 metadata 的读写工具。
+- `data/`：实际数据目录，不放实验脚本代码。
 - `data/processed/`：转储后的 PSB 数据。
 - `results/`：IRE 运行输出、RARC 扩展输出、对比图和汇总表。
+
+### 2.1 包边界说明
+
+- 对外运行入口只有根目录下的 `main.py`；不要直接从命令行运行 `ire/` 内部模块。
+- `ire/` 是代码包，存放 IRE 复现实验和扩展实验的实现逻辑。
+- `ire/data/` 是代码包中的数据转储模块，负责读取 PSB 源数据并写出结构化结果。
+- 顶层 `data/` 是实际数据目录，保存原始释放数据与 `data/processed/` 转储结果，不再存放实验脚本代码。
+- 顶层 `results/` 是实验输出目录，保存 IRE 结果、RARC 结果、图像和汇总表。
 
 ## 3. 关键实现约定
 

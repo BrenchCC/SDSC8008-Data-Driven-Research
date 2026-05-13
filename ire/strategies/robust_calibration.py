@@ -11,8 +11,8 @@ import pandas as pd
 
 sys.path.append(os.getcwd())
 
-from model.demand import DemandParameters
-from strategies.slow_moving import run_slow_moving
+from ire.model.demand import DemandParameters
+from ire.strategies.slow_moving import run_slow_moving
 
 logger = logging.getLogger(__name__)
 

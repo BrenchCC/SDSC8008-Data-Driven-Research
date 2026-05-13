@@ -8,14 +8,14 @@ from pathlib import Path
 
 sys.path.append(os.getcwd())
 
-from data.conversion import convert_psb_data
-from model.demand import DemandParameters
-from plotting.figures import plot_selected_figures
-from utils.result_io import save_simulation_result
-from strategies.slow_moving import run_slow_moving
-from strategies.robust_calibration import run_robust_calibration
-from utils.result_io import save_robust_calibration_result
-from strategies.deterministic_testing import run_deterministic_testing
+from ire.data.conversion import convert_psb_data
+from ire.model.demand import DemandParameters
+from ire.plotting.figures import plot_selected_figures
+from ire.utils.result_io import save_simulation_result
+from ire.strategies.slow_moving import run_slow_moving
+from ire.strategies.robust_calibration import run_robust_calibration
+from ire.utils.result_io import save_robust_calibration_result
+from ire.strategies.deterministic_testing import run_deterministic_testing
 
 logger = logging.getLogger(__name__)
 

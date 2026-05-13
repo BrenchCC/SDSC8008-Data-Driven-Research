@@ -5,5 +5,5 @@ import sys
 
 sys.path.append(os.getcwd())
 
-from metrics.regret import expected_revenue
-from metrics.regret import benchmark_revenue
+from ire.metrics.regret import expected_revenue
+from ire.metrics.regret import benchmark_revenue

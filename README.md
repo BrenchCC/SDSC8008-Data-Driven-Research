@@ -6,7 +6,7 @@
 
 | 交付物 | 位置 | 说明 |
 |---|---|---|
-| Python 代码复现 | `main.py` 与各模块目录 | 通过统一 CLI 转储 PSB、运行 IRE、绘图和测试 |
+| Python 代码复现 | `main.py` 与 `ire/` | 通过统一 CLI 转储 PSB、运行 IRE、绘图和测试 |
 | 代码运行指导 | `docs/code_guidance/README.md` | 中文运行说明、命令示例、输出解释 |
 | 英文报告 | `reports/8008-final-report/english/report_en.pdf` | 英文最终报告 |
 | 中文报告 | `reports/8008-final-report/chinese/report_zh.pdf` | 中文阅读版报告 |
@@ -73,16 +73,12 @@ pytest -q
 ├── configs/
 ├── data/
 ├── docs/
-├── estimators/
-├── metrics/
-├── model/
-├── plotting/
+├── ire/
 ├── ppt-design/
 ├── reports/
 ├── results/
-├── strategies/
 ├── tests/
-└── utils/
+└── README.md
 ```
 
 ## 顶层文件说明
@@ -99,19 +95,27 @@ pytest -q
 | 目录/文件 | 作用 |
 |---|---|
 | `configs/replication.yaml` | 默认复现实验参数和路径配置 |
-| `model/demand.py` | 需求函数、静态最优价格、期望收入计算 |
-| `model/reference.py` | 参考价格指数平滑更新过程 |
-| `estimators/least_squares.py` | 最小二乘估计器和 plug-in 价格估计 |
-| `metrics/regret.py` | 基于期望收入的 regret 度量 |
-| `strategies/deterministic_testing.py` | deterministic testing 策略复现 |
-| `strategies/slow_moving.py` | slow-moving pricing 策略复现 |
-| `strategies/robust_calibration.py` | RARC 扩展实验与候选策略排序 |
-| `data/conversion.py` | 将 PSB 数据转储为结构化 `.npz` 和 CSV |
-| `plotting/figures.py` | Figure 2--5、RARC 图和汇总表生成 |
-| `utils/result_io.py` | 实验结果、CSV、NPZ、metadata 的读写工具 |
+| `ire/` | IRE 实验实现包，根目录外只通过 `main.py` 调用 |
+| `ire/model/demand.py` | 需求函数、静态最优价格、期望收入计算 |
+| `ire/model/reference.py` | 参考价格指数平滑更新过程 |
+| `ire/estimators/least_squares.py` | 最小二乘估计器和 plug-in 价格估计 |
+| `ire/metrics/regret.py` | 基于期望收入的 regret 度量 |
+| `ire/strategies/deterministic_testing.py` | deterministic testing 策略复现 |
+| `ire/strategies/slow_moving.py` | slow-moving pricing 策略复现 |
+| `ire/strategies/robust_calibration.py` | RARC 扩展实验与候选策略排序 |
+| `ire/data/conversion.py` | 将 PSB 数据转储为结构化 `.npz` 和 CSV |
+| `ire/plotting/figures.py` | Figure 2--5、RARC 图和汇总表生成 |
+| `ire/utils/result_io.py` | 实验结果、CSV、NPZ、metadata 的读写工具 |
 | `tests/test_core.py` | 核心公式、估计器、策略和 RARC 排序测试 |
 
-各 Python 包中的 `__init__.py` 用于维持模块导入结构。
+`ire/` 内各子包的 `__init__.py` 用于维持模块导入结构。顶层 `data/` 不是实验代码包，只保存原始数据与转储后的结构化数据。
+
+代码边界约定：
+
+- 对外运行入口只有根目录 `main.py`。
+- 实验实现代码统一位于 `ire/`，包括 `ire/data/` 中的 PSB 转储逻辑。
+- 顶层 `data/` 只保存实际数据文件和转储结果，不放实验脚本代码。
+- 顶层 `results/` 只保存运行输出和图表，不作为代码依赖包。
 
 ## 数据目录说明
 
@@ -259,15 +263,8 @@ zip -r dist/SDSC8008-code-replication.zip \
   requirements.txt \
   main.py \
   configs \
-  model \
-  estimators \
-  metrics \
-  strategies \
-  data/__init__.py \
-  data/conversion.py \
+  ire \
   data/processed \
-  plotting \
-  utils \
   tests \
   docs/code_guidance \
   -x "*/__pycache__/*" "*/.DS_Store" "*/.pytest_cache/*"
@@ -281,13 +278,8 @@ zip -r dist/SDSC8008-code-replication-with-source-data.zip \
   requirements.txt \
   main.py \
   configs \
-  model \
-  estimators \
-  metrics \
-  strategies \
+  ire \
   data \
-  plotting \
-  utils \
   tests \
   docs/code_guidance \
   -x "*/__pycache__/*" "*/.DS_Store" "*/.pytest_cache/*"
@@ -328,15 +320,8 @@ zip -r dist/SDSC8008-final-deliverable.zip \
   requirements.txt \
   main.py \
   configs \
-  model \
-  estimators \
-  metrics \
-  strategies \
-  data/__init__.py \
-  data/conversion.py \
+  ire \
   data/processed \
-  plotting \
-  utils \
   tests \
   docs/code_guidance \
   docs/course \
